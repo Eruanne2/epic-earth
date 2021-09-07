@@ -1,0 +1,19 @@
+.main-header {
+  text-align: center;
+  font-size: 3em;
+  margin: 20px;
+}
+
+aside {
+  border: 1px solid blue;
+  float: left;
+}
+
+main {
+  margin-left: 30%;
+}
+
+#earth-image {
+  height: 600px;
+  border: 1px solid blue;
+}
