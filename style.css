@@ -13,7 +13,29 @@ main {
   margin-left: 30%;
 }
 
+.image-container {
+  position: relative;
+}
+
 #earth-image {
   height: 600px;
   border: 1px solid blue;
+}
+
+.arrow {
+  position: absolute;
+  height: 70px;
+  top: 280px;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.arrow.left {
+  left: 30px;
+}
+
+.arrow.right {
+  right: 160px;
 }
