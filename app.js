@@ -34,11 +34,18 @@ async function fetchImageNames(photoCollection, dateString){
   return true;
 }
 
+function maxDate() {
+  let d = new Date();
+  return new Date(d.setDate(d.getDate()-3));
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('earth-image').src="temp-earth.jpg";
   let collection = new photoCollection(document.getElementById('earth-image'));
   document.querySelector('.left').addEventListener('click', () => collection.scrollImage('left')); 
   document.querySelector('.right').addEventListener('click', () => collection.scrollImage('right')); 
+
+  document.getElementById('date-input').max = maxDate().toISOString().slice(0,10);
   window.collection = collection;
 })
