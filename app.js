@@ -1,22 +1,33 @@
 class photoCollection {
-  constructor(displayedImage) {
-    this.displayedImage = displayedImage;
+  constructor(imageElement) {
+    this.imageElement = imageElement;
+    this.currImageIndex = 0;
     this.imageNames = [];
     this.imageSources = [];
     this.date = document.querySelector('#date-input').value;
     fetchImageNames(this, this.date);
+
+    this.scrollImage = this.scrollImage.bind(this);
   }
 
   setImages(names) {
     this.imageNames = names;
     this.imageSources = names.map(name => `https://epic.gsfc.nasa.gov/archive/natural/${this.date.replaceAll('-', '/')}/png/${name}.png`)
-    this.displayedImage.src = this.imageSources[0];
+    this.currImageIndex = 0;
+    this.imageElement.src = this.imageSources[this.currImageIndex];
+  }
+
+  scrollImage(dir){
+    let numImages = this.imageSources.length;
+    if (dir === 'left') this.currImageIndex = (this.currImageIndex - 1 + numImages) % numImages;
+    if (dir === 'right') this.currImageIndex = (this.currImageIndex + 1) % numImages;
+    console.log(this.currImageIndex);
+    this.imageElement.src = this.imageSources[this.currImageIndex];
   }
 
 }
 
 async function fetchImageNames(photoCollection, dateString){
-  console.log(dateString);
   let response = await fetch(`https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`)
     .then(res => res.json())
     .then(data => photoCollection.setImages(data.map(datum => datum.image)))
@@ -27,6 +38,7 @@ async function fetchImageNames(photoCollection, dateString){
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('earth-image').src="temp-earth.jpg";
   let collection = new photoCollection(document.getElementById('earth-image'));
-  
+  document.querySelector('.left').addEventListener('click', () => collection.scrollImage('left')); 
+  document.querySelector('.right').addEventListener('click', () => collection.scrollImage('right')); 
   window.collection = collection;
 })

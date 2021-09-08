@@ -15,6 +15,7 @@ main {
 
 .image-container {
   position: relative;
+  width: 600px;
 }
 
 #earth-image {
@@ -33,9 +34,9 @@ main {
 }
 
 .arrow.left {
-  left: 30px;
+  left: 25px;
 }
 
 .arrow.right {
-  right: 160px;
+  right: 25px;
 }
