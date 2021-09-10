@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector('.left').addEventListener('click', () => collection.scrollImage('left')); 
   document.querySelector('.right').addEventListener('click', () => collection.scrollImage('right')); 
 
-  document.getElementById('date-input').max = maxDate().toISOString().slice(0,10);
+  let dateInput = document.getElementById('date-input');
+  dateInput.min = "2015-07-04";
+  dateInput.max = maxDate().toISOString().slice(0,10);
+  if (!dateInput.value) dateInput.value = maxDate().toISOString().slice(0,10);
   window.collection = collection;
 })

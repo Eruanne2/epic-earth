@@ -5,7 +5,6 @@
 }
 
 aside {
-  border: 1px solid blue;
   float: left;
 }
 
@@ -20,7 +19,6 @@ main {
 
 #earth-image {
   height: 600px;
-  border: 1px solid blue;
 }
 
 .arrow {
@@ -39,4 +37,8 @@ main {
 
 .arrow.right {
   right: 25px;
+}
+
+a, a:visited {
+  color: rgba(49, 49, 155, 0.897);
 }
