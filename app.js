@@ -37,9 +37,9 @@ async function fetchImageNames(photoCollection, dateString){
 function dateInputSetup(dateInput) {
   let d = new Date();
   let maxDate = new Date(d.setDate(d.getDate()-3));
-  dateInput.max = maxDate().toISOString().slice(0,10);
+  dateInput.max = maxDate.toISOString().slice(0,10);
   dateInput.min = "2015-07-04";
-  if (!dateInput.value) dateInput.value = maxDate().toISOString().slice(0,10);
+  if (!dateInput.value) dateInput.value = maxDate.toISOString().slice(0,10);
   return true;
 }
 
