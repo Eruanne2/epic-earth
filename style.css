@@ -1,3 +1,9 @@
+body {
+  color: white;
+  background-color: black;
+  font-family: 'Stick No Bills', sans-serif;
+}
+
 .main-header {
   text-align: center;
   font-size: 3em;
