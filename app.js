@@ -28,10 +28,11 @@ class photoCollection {
 }
 
 async function fetchImageNames(photoCollection, dateString){
-  let response = await fetch(`https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`)
-    .then(res => res.json())
+  let response = await fetch(`https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`) //, { mode: 'no-cors'}
+  // let response = await fetch(`http://crossorigin.me/https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`) //, { mode: 'no-cors'}
+    // .then(res => res.json())
+  response.json()
     .then(data => photoCollection.setImages(data.map(datum => datum.image)))
-  return true;
 }
 
 function dateInputSetup(dateInput) {
