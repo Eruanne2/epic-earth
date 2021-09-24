@@ -4,7 +4,7 @@ class photoCollection {
     this.currImageIndex = 0;
     this.imageNames = [];
     this.imageSources = [];
-    this.date = document.querySelector('#date-input').value;
+    this.date = document.querySelector('#date-input').value
     fetchImageNames(this, this.date);
 
     this.scrollImage = this.scrollImage.bind(this);
@@ -28,11 +28,9 @@ class photoCollection {
 }
 
 async function fetchImageNames(photoCollection, dateString){
-  let response = await fetch(`https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`) //, { mode: 'no-cors'}
-  // let response = await fetch(`http://crossorigin.me/https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`) //, { mode: 'no-cors'}
-    // .then(res => res.json())
+  let response = await fetch(`https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`) 
   response.json()
-    .then(data => photoCollection.setImages(data.map(datum => datum.image)))
+    .then(data => photoCollection.setImages(data.map(datum => datum.image)));
 }
 
 function dateInputSetup(dateInput) {
@@ -46,12 +44,12 @@ function dateInputSetup(dateInput) {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  dateInputSetup(document.getElementById('date-input'));
   document.getElementById('earth-image').src="temp-earth.jpg";
   let collection = new photoCollection(document.getElementById('earth-image'));
   document.querySelector('.left').addEventListener('click', () => collection.scrollImage('left')); 
   document.querySelector('.right').addEventListener('click', () => collection.scrollImage('right')); 
 
-  dateInputSetup(document.getElementById('date-input'));
   
   window.collection = collection;
 })
