@@ -21,7 +21,6 @@ class photoCollection {
     let numImages = this.imageSources.length;
     if (dir === 'left') this.currImageIndex = (this.currImageIndex - 1 + numImages) % numImages;
     if (dir === 'right') this.currImageIndex = (this.currImageIndex + 1) % numImages;
-    console.log(this.currImageIndex);
     this.imageElement.src = this.imageSources[this.currImageIndex];
   }
 
