@@ -5,7 +5,9 @@ class photoCollection {
     this.imageNames = [];
     this.imageSources = [];
     this.date = document.querySelector('#date-input').value
+    
     fetchImageNames(this, this.date);
+    document.getElementById('date-input').addEventListener('change', () => fetchImageNames(this, this.date));
 
     this.scrollImage = this.scrollImage.bind(this);
   }
@@ -14,6 +16,7 @@ class photoCollection {
     this.imageNames = names;
     this.imageSources = names.map(name => `https://epic.gsfc.nasa.gov/archive/natural/${this.date.replaceAll('-', '/')}/png/${name}.png`)
     this.currImageIndex = 0;
+    console.log(this.imageSources[this.currImageIndex])
     this.imageElement.src = this.imageSources[this.currImageIndex];
   }
 
