@@ -25,14 +25,19 @@
     </ul>
   </aside>
   <main>
-    <div class="image-container">
-      <img class="arrow left" src="arrow-left.png">
-      <img class="arrow right" src="arrow-right.png">
-      <img id="earth-image"/>
+    <div>
+      <div class="image-container">
+        <img class="arrow left" src="arrow-left.png">
+        <img class="arrow right" src="arrow-right.png">
+        <img id="earth-image"/>
+        <div class="loading-background hidden">
+          <div class="lds-ripple"><div></div><div></div></div>
+        </div>
+      </div>
+      <label for="date-input"></label>
+      <input type="date" id="date-input"/>
+      <p>All photos taken by the <a href="https://epic.gsfc.nasa.gov/about/api">Earth Polychromatic Imaging Camera</a></p>
     </div>
-    <label for="date-input"></label>
-    <input type="date" id="date-input"/>
-    <p>All photos taken by the <a href="https://epic.gsfc.nasa.gov/about/api">Earth Polychromatic Imaging Camera</a></p>
   </main>
 </body>
 
