@@ -10,16 +10,14 @@ class photoCollection {
     document.getElementById('date-input').addEventListener('change', () => fetchImageNames(this, this.date));
 
     this.scrollImage = this.scrollImage.bind(this);
-  }
+  };
 
   setImages(names) {
     this.imageNames = names;
     this.imageSources = names.map(name => `https://epic.gsfc.nasa.gov/archive/natural/${this.date.replaceAll('-', '/')}/png/${name}.png`)
     this.currImageIndex = 0;
-    console.log(this.imageSources[this.currImageIndex])
     this.imageElement.src = this.imageSources[this.currImageIndex];
-    document.getElementsByClassName('loading-background')[0].classList.add('hidden');
-  }
+  };
 
   scrollImage(dir){
     document.getElementsByClassName('loading-background')[0].classList.remove('hidden');
@@ -27,18 +25,15 @@ class photoCollection {
     if (dir === 'left') this.currImageIndex = (this.currImageIndex - 1 + numImages) % numImages;
     if (dir === 'right') this.currImageIndex = (this.currImageIndex + 1) % numImages;
     this.imageElement.src = this.imageSources[this.currImageIndex];
-    // document.getElementsByClassName('loading-background')[0].classList.add('hidden');
-  }
+  };
 
 }
 
 async function fetchImageNames(photoCollection, dateString){
   document.getElementsByClassName('loading-background')[0].classList.remove('hidden');
-  console.log(dateString);
   let response = await fetch(`https://epic.gsfc.nasa.gov/api/natural/date/${dateString}`) 
   response.json()
     .then(data => {
-      console.log(data);
       photoCollection.setImages(data.map(datum => datum.image));
     });
 }
@@ -53,6 +48,9 @@ function dateInputSetup(maxDate, dateInput) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementsByClassName('loading-background')[0].classList.remove('hidden');
+  document.getElementById('earth-image').addEventListener('load', () => 
+    document.getElementsByClassName('loading-background')[0].classList.add('hidden')
+  );
   let response = await fetch('https://epic.gsfc.nasa.gov/api/natural')
   response.json().then(data => {
     date = data[0].date.slice(0,10)
