@@ -42,7 +42,6 @@ function dateInputSetup(maxDate, dateInput) {
   dateInput.max = maxDate;
   dateInput.min = "2015-07-04";
   if (!dateInput.value) dateInput.value = maxDate;
-
   // document.getElementById('feb-11-21').addEventListener('click', () => dateInput.valueAsDate = new Date('2021-02-11'));
   // document.getElementById('oct-2-20').addEventListener('click', () => dateInput.valueAsDate = new Date('2020-10-02'));
   // document.getElementById('aug-21-17').addEventListener('click', () => dateInput.valueAsDate = new Date('2017-08-21'));
